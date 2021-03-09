@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hole {
+      width:50px;
+      height:50px;
+      background-color: aquamarine;
+      transition: all .4s;
+    }
+    .hole.up .mole {
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whack -a - mole <span class="score">0</span></h1>
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+  
+<script>
+const holes = document.querySelectorAll('.hole');
+const scoreBoard = document.querySelectorAll('.score');
+const moles = document.querySelectorAll('.mole');
+let lastHole;
+
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+function randomHole(holes){
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  if(hole === lastHole) {
+    console.log('thats the same one');
+    return randomHole(holes)
+  }
+  lastHome = hole;
+  return hole;
+} 
+
+function peep() {
+
+  const time = randomTime(200, 1000);
+  const hole = randomHole(holes);
+  hole.classList.add('up')
+}
+</script>
+</body>
+</html>
