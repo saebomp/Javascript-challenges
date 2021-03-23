@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .h1 {background: #ff0;}
+  </style>
+</head>
+<body>
+  <div>
+    dkd..
+  </div>
+
+<script>
+  const endpoint = 'https://api.themoviedb.org/3/movie/now_playing?api_key=45ffcc6c9ffc640faa6714543e2fc6a3&page=1&language=en-US'
+
+  const cities = [];
+
+  fetch(endpoint)
+  .then(response => {response.json(); console.log(response)})
+  .then(data => console.log(data))
+
+
+</script>
+</body>
+</html>
