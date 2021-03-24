@@ -10,18 +10,29 @@
   </style>
 </head>
 <body>
-  <div>
-    dkd..
+  <div id="result">
   </div>
 
 <script>
   const endpoint = 'https://api.themoviedb.org/3/movie/now_playing?api_key=45ffcc6c9ffc640faa6714543e2fc6a3&page=1&language=en-US'
 
-  const cities = [];
 
   fetch(endpoint)
-  .then(response => {response.json(); console.log(response)})
-  .then(data => console.log(data))
+  .then(response => response.json())
+  .then(data => showCharacters(data.results))
+  .catch(err => console.log('Request Failed', err))
+
+
+showCharacters = characters => {
+  const charactersDiv = document.querySelector('#result');
+  characters.forEach(character => {
+    const characterElement = document.createElement('li');
+    characterElement.innerHTML = `<div> ${character.original_title} </div> 
+    <div> ${character.overview} </div>
+    `;
+    charactersDiv.append(characterElement);
+  });
+}
 
 
 </script>
