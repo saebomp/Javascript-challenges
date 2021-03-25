@@ -12,14 +12,14 @@
 <body>
   <ul id="bands"></ul>
   <script>
-    const bands = ['Band', 'The keg', 'Dog', 'Cat', 'Drive', 'Plot', 'Devil Wears Prada', 'Midway State', "Oh, slpper",'An Ice burg', 'Anywhere' ]
+    const bands = ['Band', 'The keg', 'Dog', 'Cat', 'Drive', 'Plot', 'Devil Wears Prada', 'Midway State', "Oh, slpper",'An Ice burg', 'Anywhere', 'apple' ]
 
     strip = (bandName) => {
       return bandName.replace(/^(a |the |an )/i, '').trim();
     }
 
     const sortedBands = bands.sort((a,b) => {
-      return strip(a) > strip(b) ? 1 : -1;
+      return strip(a.toLowerCase()).localeCompare(strip(b.toLowerCase()));
     })
     // const sortedBands = bands.sort((a,b) => strip(a) > strip(b) ? 1 : -1)
 
