@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="timer">
+    <div class="timer__controls">
+      <button data-time="20" class="timer__button">20 Secs</button>
+      <button data-time="300" class="timer__button">Work 5</button>
+      <button data-time="900" class="timer__button">Quick 15</button>
+      <button data-time="1200" class="timer__button">Snack 20</button>
+      <button data-time="3600" class="timer__button">Lunck Break</button>
+      <form name="customForm" id="custom">
+        <input type="text" name="minutes" placeholder="Enter Minutes">
+      </form>
+    </div>
+    <div class="display">
+      <h1 class="display__time-left"></h1>
+      <p class="display__end-time"></p>
+    </div>
+  </div>
+
+  <script>
+    let countdown;
+    const timerDisplay = document.querySelector('.display__time-left')
+    const endTime = document.querySelector('.display__end-time')
+    const buttons = document.querySelectorAll('[data-time]')
+
+    timer = (seconds) => {
+      //clear any existin times
+      clearInterval(countdown);
+
+      const now = Date.now();
+      const then = now + seconds * 1000;
+      displayTimeLeft(seconds);
+      displayEndTime(then);
+
+
+      countdown = setInterval(() => {
+        const secondsLeft = Math.round((then - Date.now()) / 1000);
+        if(secondsLeft <= 0) {
+          clearInterval(countdown);
+          return
+        }
+        displayTimeLeft(secondsLeft)
+      }, 1000)
+    }
+
+    displayTimeLeft = (seconds) => {
+      const minutes = Math.floor(seconds / 60);
+      const remainderSeconds = seconds % 60;
+      const display = `${minutes} : ${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`
+      document.title = display;
+      timerDisplay.textContent = display
+      console.log({minutes, remainderSeconds});
+    }
+
+    displayEndTime = ( timestamp ) => {
+      const end = new Date(timestamp);
+      const hour = end.getHours();
+      const adjustedHour = hour > 12 ? hour - 12 : hour
+      const minutes = end.getMinutes();
+      endTime.textContent = `Be Back At ${adjustedHour}:${minutes}`;
+    }
+
+    startTimer = (e) => {
+      const seconds = parseInt(e.target.dataset.time)
+      timer(seconds)
+    }
+
+    buttons.forEach(button => button.addEventListener('click', startTimer))
+
+    document.customForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mins = e.target.minutes.value;
+      console.log(mins);
+      timer(mins * 60);
+      e.target.reset;
+    })
+  </script>
+</body>
+</html>
+
+<!-- https://www.youtube.com/watch?v=LAaf7-WuJJQ&list=PLu8EoSxDXHP6CGK4YVJhL_VWetA865GOH&index=29 -->
