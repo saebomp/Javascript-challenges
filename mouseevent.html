@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse move event</title>
+</head>
+<style>
+  h1 {
+    font-size:100px;
+    width:100%;
+    text-align: center;
+    color:aquamarine;
+    padding-top: 100px;
+    color:cadetblue;
+  }
+</style>
+<body>
+<div class="hero">
+  <h1>HELLO WORLD</h1>
+</div>
+<script>
+  const hero = document.querySelector('.hero')
+  const text = hero.querySelector('h1')
+  const walk = 100; //100px
+
+  function shadow(e) {
+    // const width = hero.offsetWidth;
+    // const height = hero.offsetHeight;
+    const {offsetWidth: width, offsetHeight: height} = hero;
+    let {offsetX:x, offsetY:y} = e;
+
+    if(this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+    const xWalk = Math.round((x / width * walk) - (walk /2))
+    const yWalk = Math.round((y / height * walk) - (walk /2))
+    
+    text.style.textShadow = `
+    ${xWalk}px ${yWalk}px 0 aquamarine,
+    ${xWalk * -1}px ${yWalk}px 0 brown
+    `
+  }
+
+  hero.addEventListener('mousemove', shadow)
+</script>
+</body>
+</html>
+
+<!-- https://www.youtube.com/watch?v=zaz9gLI-Xac&list=PLu8EoSxDXHP6CGK4YVJhL_VWetA865GOH&index=17 -->
