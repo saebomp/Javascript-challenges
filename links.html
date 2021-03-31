@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Along Links</title>
+  <style>
+    * {
+      margin:0;
+      padding:0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    a {
+      text-decoration: none;
+      border-radius: 20px;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 100px 0;
+    }
+    .menu a {
+      display: inline-block;
+      padding:5px;
+      margin:0 20px;
+      position: relative;
+    }
+    a {
+      text-decoration: none;
+      background: rgba(0,0,0,0.05);
+      border-radius: 20px;
+    }
+    .highlight {
+      transition: all 0.2s;
+      position: absolute;
+      top:0;
+      left:0;
+      background:aquamarine;
+      z-index: -1;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="menu">
+      <li><a href="">Home</a></li>
+      <li><a href="">Menu</a></li>
+      <li><a href="">Order Status</a></li>
+      <li><a href="">Read Our History</a></li>
+      <li><a href="">Contact us</a></li>
+    </ul>
+  </nav>
+<script>
+  const triggers = document.querySelectorAll('a');
+  const highlight = document.createElement('span');
+  highlight.classList.add('highlight');
+  document.body.append(highlight);
+
+  hightlightLink = (e) => {
+    const linkCoords = e.target.getBoundingClientRect();
+    console.log(linkCoords)
+    highlight.style.width = `${linkCoords.width}px`
+    highlight.style.height = `${linkCoords.height}px`
+    highlight.style.transform = `translate(${linkCoords.left}px, ${linkCoords.top}px)`
+  }
+
+  triggers.forEach(a => a.addEventListener('mouseenter', hightlightLink));
+</script>
+</body>
+</html>
