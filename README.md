@@ -7,9 +7,10 @@
 * Ajax Type Ahead with fetch
 * Flexbox
 * Image slider
+* Canvas
 
 # Setup
-url
+https://saebomp.github.io/Javascript-challenges/
 
 # Status
 Project is in progress
