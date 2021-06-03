@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoverboard</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .hoverboard_wrap {
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 400px;
+    }
+
+    .square {
+      background-color: #1d1d1d;
+      box-shadow: 0 0 2px #000;
+      height: 16px;
+      width: 16px;
+      margin: 2px;
+      transition: 2s ease;
+    }
+
+    .square:hover {
+      transition-duration: 0s;
+      background-color:
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    What I Learned
+    <span class="back"><a href="https://saebomp.github.io/Javascript-challenges"><svg stroke="white" fill="white" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm43.4 289.1c7.5 7.5 7.5 19.8 0 27.3-3.8 3.8-8.7 5.6-13.6 5.6s-9.9-1.9-13.7-5.7l-94-94.3c-6.9-7.6-6.7-19.3.6-26.6l95.4-95.7c7.5-7.5 19.7-7.6 27.3 0 7.5 7.5 7.6 19.7 0 27.3l-81.9 81 79.9 81.1z"></path></svg></a></span>
+  </div>
+  <div class="hoverboard_wrap">
+    <div class="container" id="container"></div>
+  </div>
+<script>
+  const container = document.getElementById('container')
+  const colors = ['#e74c3c', '#8e44ad', '#3498db', '#e67e22', '#2ecc71','#7fffd4','#7ffff0','#ff1493']
+  const SQUARES = 500
+
+  for(let i=0; i<SQUARES; i++){
+    const square = document.createElement('div')
+    square.classList.add('square')
+    square.addEventListener('mouseover', () => setColor(square))
+    square.addEventListener('mouseout', () => removeColor(square))
+    container.appendChild(square)
+  }
+setColor = (element) => {
+  const color = getRandomColor()
+  element.style.background = color
+  element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`
+}
+removeColor = (element) =>{
+  element.style.background='#1d1d1d'
+  element.style.boxShadow='0 0 2px #000'
+}
+getRandomColor = () =>{
+  return colors[Math.floor(Math.random()* colors.length)]
+}
+</script>
+</body>
+</html>
+
+
+// https://github.com/bradtraversy/50projects50days/tree/master/hoverboard
