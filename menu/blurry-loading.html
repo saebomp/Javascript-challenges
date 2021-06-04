@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blurry Loading</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .bg {
+      background: url('https://images.unsplash.com/photo-1576161787924-01bb08dad4a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80')
+        no-repeat center center/cover;
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: calc(100vw + 60px);
+      height: calc(100vh + 60px);
+      z-index: -1;
+      filter: blur(0px);
+    }
+
+    .loading-text {
+      font-size: 50px;
+      color: #fff;
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    .title {
+      background-color: #483d8b;
+      text-align: center;
+      padding: 20px 0;
+      color: #fff;
+      font-size: 24px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .back {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      cursor: pointer;
+    }
+    .list {
+      background-color: #ececec;
+      padding: 10px;
+    }
+    .list li {
+      background-color: #fff;
+      border: 1px solid #dedede;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    What I Learned
+    <span class="back"><a href="https://saebomp.github.io/Javascript-challenges"><svg stroke="white" fill="white" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm43.4 289.1c7.5 7.5 7.5 19.8 0 27.3-3.8 3.8-8.7 5.6-13.6 5.6s-9.9-1.9-13.7-5.7l-94-94.3c-6.9-7.6-6.7-19.3.6-26.6l95.4-95.7c7.5-7.5 19.7-7.6 27.3 0 7.5 7.5 7.6 19.7 0 27.3l-81.9 81 79.9 81.1z"></path></svg></a></span>
+  </div>
+  <div class="blurry_wrap">
+    <section class="bg"></section>
+    <div class="loading-text">0%</div>
+  </div>
+<script>
+  const loadText = document.querySelector('.loading-text')
+  const bg = document.querySelector('.bg')
+
+  let load = 0
+  let int = setInterval(blurring, 30) // 30/1초 에 한번씩 blurring 실행
+  function blurring () {
+    load++
+    if(load>99){
+      clearInterval(int)
+    }
+    loadText.innerText = `${load}%`
+    loadText.style.opacity = scale(load, 0, 100, 1, 0)
+    bg.style.filter = `blur(${scale(load,0,100,30,0)}px)`
+  }
+
+  const scale = (num, in_min, in_max, out_min, out_max) => {
+  return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+}
+</script>
+</body>
+</html>
