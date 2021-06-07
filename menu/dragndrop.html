@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .dragndrop_wrap {
+    background-color: steelblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .empty {
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    border: solid 3px black;
+    background: white;
+  }
+  .fill {
+    background-image: url('https://source.unsplash.com/random/150x150');
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+  }
+  .hold {
+    border: solid 5px #ccc;
+  }
+  .hovered {
+    background-color: #333;
+    border-color: white;
+    border-style: dashed;
+  }
+
+  @media (max-width: 800px) {
+    body {
+      flex-direction: column;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="title">
+    What I Learned
+    <span class="back"><a href="https://saebomp.github.io/Javascript-challenges"><svg stroke="white" fill="white" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm43.4 289.1c7.5 7.5 7.5 19.8 0 27.3-3.8 3.8-8.7 5.6-13.6 5.6s-9.9-1.9-13.7-5.7l-94-94.3c-6.9-7.6-6.7-19.3.6-26.6l95.4-95.7c7.5-7.5 19.7-7.6 27.3 0 7.5 7.5 7.6 19.7 0 27.3l-81.9 81 79.9 81.1z"></path></svg></a></span>
+  </div>
+  <div class="dragndrop_wrap">
+    <div class="empty">
+      <div class="fill" draggable="true"></div>
+    </div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+    <div class="empty"></div>
+  </div>
+<script>
+  const fill = document.querySelector('.fill')
+  const empties = document.querySelectorAll('.empty')
+
+  fill.addEventListener('dragstart', dragStart)
+  fill.addEventListener('dragend', dragEnd)
+
+  for(const empty of empties) {
+    // 블록 내부 변수를 수정하지 않는 경우 const 사용
+    // 반복하고 각 개별 속성값에 대해 실행되는 문이 있는 사용자 정의 반복 후크를 호출하는 루프를 생성
+    // array 안의 내용 map처럼 돌려주는데도 씀
+
+    empty.addEventListener('dragover', dragOver) 
+    //(type, listner) dragover 할때 dragOver 함수 실행
+    empty.addEventListener('dragenter', dragEnter)
+    empty.addEventListener('dragleave', dragLeave)
+    empty.addEventListener('drop', dragDrop)
+  }
+
+  function dragStart(){
+    this.className += ' hold'
+    setTimeout(() => this.className = 'invisible', 0)
+  }
+  function dragEnd(){
+    this.className='fill'
+  }
+  function dragOver(e){
+    e.preventDefault()
+  }
+  function dragEnter(e){
+    e.preventDefault()
+    this.className +=' hovered'
+  }
+  function dragLeave(){
+    this.className = 'empty'
+  }
+  function dragDrop(){
+    this.className = 'empty'
+    this.append(fill)
+  }
+</script>
+</body>
+</html>
+
+<!-- https://github.com/bradtraversy/50projects50days/tree/master/drag-n-drop -->
