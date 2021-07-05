@@ -8,6 +8,7 @@
 * Flexbox
 * Image slider
 * Canvas
+* Scroll Event
 
 # Setup
 https://saebomp.github.io/Javascript-challenges/
