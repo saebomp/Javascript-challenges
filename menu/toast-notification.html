@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast Notification</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    * {
+    box-sizing: border-box;
+  }
+  .toast-notification {
+    background-color: #483d8b;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .btn {
+    background-color: #ffffff;
+    color: rebeccapurple;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:focus {
+    outline: none;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  #toasts {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .toast {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+  }
+
+  .toast.info {
+    color: rebeccapurple;
+  }
+
+  .toast.success {
+    color: green;
+  }
+
+  .toast.error {
+    color: red;
+  }
+  </style>
+</head>
+<body>
+  <div class="title">
+    What I Learned
+    <span class="back"><a href="https://saebomp.github.io/Javascript-challenges"><svg stroke="white" fill="white" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm43.4 289.1c7.5 7.5 7.5 19.8 0 27.3-3.8 3.8-8.7 5.6-13.6 5.6s-9.9-1.9-13.7-5.7l-94-94.3c-6.9-7.6-6.7-19.3.6-26.6l95.4-95.7c7.5-7.5 19.7-7.6 27.3 0 7.5 7.5 7.6 19.7 0 27.3l-81.9 81 79.9 81.1z"></path></svg></a></span>
+  </div>
+  <div class="toast-notification">
+    <div id="toasts"></div>
+    <button class="btn" id="button">Show Notification</button>
+  </div>
+  <script>
+    const button = document.getElementById('button')
+    const toasts = document.getElementById('toasts')
+    const messages = [
+      'Message One',
+      'Message Two',
+      'Message Three',
+      'Message Four',
+    ]
+    const types = ['info', 'success', 'error']
+    button.addEventListener('click', () => createNotification())
+
+    function createNotification(message = null, type = null) {
+      const notif = document.createElement('div')
+      notif.classList.add('toast')
+      notif.classList.add(type ? type: getRandomType())
+
+      notif.innerText = message ? message : getRandomMessage()
+      toasts.appendChild(notif)
+
+      setTimeout(() => {
+        notif.remove()
+      }, 3000)
+    }
+    function getRandomMessage() {
+      return messages[Math.floor(Math.random()* messages.length)]
+    }
+    function getRandomType() {
+      return types[Math.floor(Math.random()* types.length)]
+    }
+  </script>
+</body>
+</html>
+
+<!-- https://github.com/bradtraversy/50projects50days/tree/master/toast-notification -->
