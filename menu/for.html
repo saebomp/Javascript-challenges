@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div id="map">
+    das
+  </div>
+  <div id="map2">
+    das
+  </div>
+
+
+  <script>
+let arr = [1, 2, 3, 4, 5];
+
+for (let i=0; i<arr.length; i++){
+  const result = arr[i]
+  map.innerHTML = result
+}
+
+
+arr.forEach((num, index) => {
+    const result2 = arr[index] = num * 2;
+    map2.innerHTML = result2
+});
+
+
+let doubled = arr.map(num => {
+    return num * 2;
+});
+  </script>
+</body>
+</html>
