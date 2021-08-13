@@ -42,6 +42,11 @@ lname:'pak',
 age:22
 }
 
+for (const property in people) {
+  console.log(`${property}: ${people[property]}`);
+}
+
+
 let leng = Object.keys(people).length;
 let key1 = Object.keys(people);
 let value1 = Object.values(people);
@@ -53,9 +58,7 @@ console.log('entry1',entry1)
 
 
 
-for (const property in people) {
-  console.log(`${property}: ${people[property]}`);
-}
+
 
   </script>
 </body>

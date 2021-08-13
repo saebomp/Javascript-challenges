@@ -42,34 +42,174 @@ a {
   grid-template-columns: 0.5fr 1fr;
 }
 
-header {
+.flexbox header {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
   background: blue;
 }
 
-aside {
+.flexbox aside {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   background: green;
 }
 
-main {
-  grid-row: 2 / 3;
+.flexbox main {
   grid-column: 2 / 3;
+  grid-row: 2 / 3;
   background: pink;
 }
 
-footer {
+.flexbox footer {
   grid-column: 1 / 3;
   grid-row: 3 / 4;
   background: yellow;
 }
 
-header ul {
+.flexbox header ul {
   display: flex;
   justify-content: flex-end;
   align-items:center;
   height: 100%;
 }
 
+.flexbox header li {
+  margin-right:10px;
+}
+
+.responsive {
+  width:100%;
+  height:100vh;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-rows:150px auto auto;
+  align-items:center;
+  background-color: aquamarine;
+}
+
+.responsive header {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding:20px;
+  margin:20px;
+  background-color: #fff;
+  box-sizing: border-box;
+  display:grid;
+  grid-template-columns:20% 50% 30%;
+  font-size:20px;
+  align-items: center;
+}
+.responsive header nav ul {
+  list-style:none;
+  align-items: center;
+  height:100%;
+  display:flex;
+}
+.responsive header nav ul li {
+  align-items:center
+}
+.responsive header nav li a span{
+  border-bottom:5px solid #fff;
+}
+.responsive header nav li a span:hover {
+  border-bottom:5px solid #000;
+  transition:all .1s
+}
+.responsive header nav.primary-nav {
+  width:70%;
+}
+.responsive header nav.primary-nav ul {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-evenly;
+}
+.responsive header nav.primary-nav li {
+  font-weight:bold;
+}
+.responsive header nav.secondary-nav {
+  display:flex;
+  flex-direction: column;
+}
+.responsive header nav.secondary-nav ul{
+  display:flex;
+  flex-wrap:wrap;
+  font-size: 18px;
+}
+.responsive header nav.secondary-nav li {
+  flex:50%;
+  margin:5px 0;
+}
+.responsive main {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin:20px;
+  padding:20px;
+  background-color: #fff;
+}
+.responsive main .container {
+  display:flex;
+  flex-direction:row;
+}
+.responsive main .container h2 {
+  width:200px;
+  margin-right:50px;
+}
+.responsive main .container p {
+  width:400px;
+  line-height:2
+}
+.responsive main .heroimage-wrap {
+  margin-top:50px;
+  position: relative;
+}
+.responsive main .heroimage-wrap img {
+  width:600px;
+}
+.responsive main .heroimage-wrap .home-text {
+  background-color:#fff;
+  position:absolute;
+  top:50%;
+  left:550px;
+  transform:translate(0, -50%);
+  padding:30px;
+}
+.responsive main .heroimage-wrap .home-text h1 {
+  margin-bottom:20px;
+}
+.responsive main .heroimage-wrap .home-text a {
+  margin-top:20px;
+  position:relative;
+  font-weight:bold;
+}
+.responsive main .heroimage-wrap .home-text a span {
+  display: block;
+}
+.responsive main .heroimage-wrap .home-text a span.btn {
+  z-index: 10;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.responsive main .heroimage-wrap .home-text a span.btn {
+  display: block;
+  position: absolute;
+  height: 20px;
+  width: 150px;
+  right: 0;
+  background: #d1d3d4;
+  content: "";
+  z-index: -1;
+  top: 0px;
+  left:20px;
+  transition: .1s ease-in-out all;
+}
+.responsive main .heroimage-wrap .home-text a span.btn:hover {
+  transform: scale(1.25);
+  top: -2px;
+}
+
+.responsive footer {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
