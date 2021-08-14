@@ -185,31 +185,52 @@ a {
 .responsive main .heroimage-wrap .home-text a span {
   display: block;
 }
-.responsive main .heroimage-wrap .home-text a span.btn {
-  z-index: 10;
-  position:absolute;
-  top:0;
-  left:0;
-}
-.responsive main .heroimage-wrap .home-text a span.btn {
-  display: block;
-  position: absolute;
-  height: 20px;
-  width: 150px;
-  right: 0;
-  background: #d1d3d4;
-  content: "";
-  z-index: -1;
-  top: 0px;
-  left:20px;
-  transition: .1s ease-in-out all;
-}
-.responsive main .heroimage-wrap .home-text a span.btn:hover {
-  transform: scale(1.25);
-  top: -2px;
-}
 
 .responsive footer {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
+}
+
+.button {
+  width:170px;
+  cursor:pointer;
+}
+.button::after {
+  background:#dedede;
+  content:'';
+  width:130px;
+  height:20px;
+  position:absolute;
+  bottom:0;
+  right:0;
+  z-index: -1;
+  transition:all .5s
+}
+.button:hover::after  {
+  width:170px;
+  height:30px;
+}
+
+
+
+
+
+@media only screen and (max-width: 980px) {
+  .responsive main .container{
+    flex-direction:column;
+  }
+  .responsive main .container h2 {
+    width:100%;
+  }
+  .responsive main .container p {
+    width:100%;
+  }
+  .responsive main .heroimage-wrap img {
+    width:100%
+  }
+  .responsive main .heroimage-wrap .home-text {
+    position:static;
+    top:0;
+    transform: translate(0, 0)
+  }
 }

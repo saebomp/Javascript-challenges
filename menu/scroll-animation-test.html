@@ -23,28 +23,34 @@
       margin:10px
     }
     .box {
-      background-color:aquamarine;
-      color:#fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width:400px;
+      width: 1000px;
       height: 200px;
-      margin:10px;
-      border-radius: 10px;
-      box-shadow: 2px 4px 5px rgba(0,0,0,0.3);
-      transform:translate(400%);
-      transition:transform 0.4s ease;
-      overflow: hidden;
+      background: red;
+      position: absolute;
+      /* animation: myfirst 3s 1; */
+      transform: rotate(-30deg) translateX(10px);
+      top:0;
+      right:0;
     }
     .box:nth-of-type(even) {
-      transform:translateX(-400%)
+      transform: rotate(-30deg) translateX(-100px);
+      top:0;
+      right:0;
+      background-color: blueviolet;
     }
     .box.show {
-      transform:translateX(0)
+      transform:rotate(-30deg) translateX(-0px);
+      animation: myfirst 5s 1;
     }
+
     .box h2 {
       font-size: 40px;
+    }
+    .test {
+      height:1500px;
+      width:100px;
+      background-color: aqua;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -57,36 +63,23 @@
     <h1>Scroll to see the animation</h1>
     <div class="box"><h2>Content</h2></div>
     <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
-    <div class="box"><h2>Content</h2></div>
+  </div>
+  <div>
+    <div class="test">test</div>
   </div>
   <script>
-    const boxes = document.querySelectorAll('.box')
+    const box = document.querySelector('.box')
+    const body = document.querySelector('.test')
+    let windowY = window.pageYOffset
 
-    window.addEventListener('scroll', checkBoxes)
-    checkBoxes()
-    function checkBoxes() {
-      const triggerBottom = window.innerHeight / 5 * 4
-      
-      boxes.forEach(box => {
-        const boxTop = box.getBoundingClientRect().top
-        console.log(boxTop)
-        if(boxTop < triggerBottom) {
-          box.classList.add('show')
-        } else {
-          box.classList.remove('show')
-        }
-      })
+
+    // element.scrollHeight - element.scrollTop === element.clientHeight
+    
+    console.log('windowY',windowY)
+    window.addEventListener('scroll', fixNav)
+    function fixNav() {
+      box.style.transform = `rotate(-30deg) translateX(-${windowY})`
+      // console.log(box.style.transform)
     }
 
 
