@@ -79,15 +79,15 @@ button {
     <h2 class="title">
       Tell us about your home
     </h2>
-    <form>
+    <form id="form">
       <fieldset>
         <div>
-           <label for="add">Address</label>
-            <input id="add">
+           <label for="address">Address</label>
+            <input id="address" required>
         </div>
         <div>
           <label for="city">City</label>
-          <input id="city">
+          <input id="city" required>
         </div>
       </fieldset>
       <fieldset>
@@ -110,13 +110,27 @@ button {
       <fieldset>
       <div class="span2">
       <label for="textfield">Message</label>
-        <textarea id="textfield"></textarea>
+        <textarea id="textfield" required></textarea>
       </div>
       </fieldset>
-       <button>
-      Submit
+      <p id="alert1"></p>
+       <button id="btn">
+        Submit
       </button>
     </form>
   </div>
+  <script>
+    const form = document.querySelector('#form')
+
+    btn.addEventListener('click', () => {
+      if(textfield.value.length === 0) {
+        alert1.innerHTML = "Please add your message"
+      }else {
+        alert1.innerHTML = ''
+      }
+    })
+
+ 
+  </script>
 </body>
 </html>
