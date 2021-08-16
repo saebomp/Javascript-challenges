@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM</title>
+  <style>
+    * {
+  margin:0;
+  padding:0;
+  font-family:'Arial';
+  box-sizing:border-box;
+}
+.container {
+  padding:20px
+}
+.container h2 {
+  margin-bottom:15px
+}
+fieldset {
+  border:none;
+  display:flex;
+  flex-direction:row;
+}
+fieldset div {
+  flex-basis:50%;
+  margin-right:10px;
+}
+fieldset div:nth-of-type(2) {
+  margin-right:0;
+}
+fieldset label {
+  margin:5px 0;
+  display:block;
+}
+fieldset input {
+  width:100%;
+  border:1px solid #eee;
+  border-bottom:5px solid #000;
+  padding:10px;
+  outline:none;
+}
+fieldset select {
+  width:100%; 
+  border:1px solid #eee;
+  padding:10px;
+  outline:none;
+  border-bottom:5px solid #000;
+}
+fieldset textarea {
+  width:100%;
+  padding:10px;
+  border-bottom:5px solid #000;
+}
+fieldset div.span2 {
+  flex-basis:100%;
+  margin-right:0;
+}
+button {
+  width:100%;
+  background-color:#dedede;
+  padding:10px;
+}
+
+@media only screen and (max-width:680px){
+  fieldset {
+    flex-direction:column;
+  }
+  fieldset div {
+    flex-basis:100%;
+    margin-right:0;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="title">
+      Tell us about your home
+    </h2>
+    <form>
+      <fieldset>
+        <div>
+           <label for="add">Address</label>
+            <input id="add">
+        </div>
+        <div>
+          <label for="city">City</label>
+          <input id="city">
+        </div>
+      </fieldset>
+      <fieldset>
+        <div>
+          <label for="hometype">Home Type</label>
+          <select id="type">
+            <option value="house">House</option>
+            <option value="condo">Condo</option>
+            <option value="townhouse">Town House</option>
+          </select>
+        </div>
+        <div>
+          <label for="roomtype">Room Type</label>
+          <select id="roomtype">
+            <option value="single">Single</option>
+            <option value="twin">Twin</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+      <div class="span2">
+      <label for="textfield">Message</label>
+        <textarea id="textfield"></textarea>
+      </div>
+      </fieldset>
+       <button>
+      Submit
+      </button>
+    </form>
+  </div>
+</body>
+</html>
