@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For each</title>
   <style>
-
+.active {
+  font-size:20px;
+}
   </style>
 </head>
 <body>
@@ -85,6 +87,29 @@
 
     const sortNum = num.sort((a,b) => b-a)
     console.log(sortNum)
+
+
+
+    let li = document.querySelectorAll('.li')
+    
+
+    li.forEach((el) => {
+      const currentClass = el.className;
+      console.log('currentClass', currentClass)
+      const ifClass = "li" 
+      
+
+      el.addEventListener('click', ()=> {
+
+        if(currentClass === ifClass){
+        el.classList.add('active')
+        }
+        else {
+          el.classList.remove('active')
+        }
+        
+      })
+    })
   </script>
 </body>
 </html>

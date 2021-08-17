@@ -234,3 +234,142 @@ a {
     transform: translate(0, 0)
   }
 }
+
+/**************responsive structure*******************/
+.rs {
+  box-sizing:border-box;
+  width:100%;
+  height:100vh;
+  display:grid;
+  grid-template-columns:auto auto;
+  grid-template-rows:150px auto;
+  padding:0 25px;
+  grid-gap:10px;
+}
+.rs header {
+  background: #fff;
+  padding:30px 40px;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  grid-column:1/2;
+  grid-row:1/2;
+  align-items:center;
+  margin-top:25px;
+}
+.rs header nav {
+  display:flex;
+  flex-direction:row;
+  flex-basis:80%;
+  justify-content:space-between;
+  align-items:center;
+}
+.rs header nav ul {
+  display:flex;
+  flex-direction:row;
+  list-style:none;
+  font-weight:bold;
+}
+.rs header nav .main_nav {
+  flex:2;
+  justify-content:space-evenly;
+  font-size:25px;
+}
+.rs header nav .secondary_nav{
+  flex:1;
+  flex-wrap: wrap;
+}
+.rs header nav .secondary_nav span {
+  border-bottom:5px solid #fff;
+  display:inline-block;
+  margin-top:10px;
+}
+.rs header nav .secondary_nav span:hover {
+  border-bottom:5px solid #000;
+  transition:all 0.2s;
+}
+.rs header nav .secondary_nav li {
+  width:50%;
+}
+.rs main {
+  grid-column:1/2;
+  grid-row:2/3;
+  margin-top:25px;
+}
+.rs main .title_area p {
+  width:60%;
+  font-size:25px;
+  line-height:1.5
+}
+.rs main .list_wrap {
+  display:flex;
+  flex-direction:row;
+  margin-top:50px;
+}
+.rs main .list_wrap .list_area {
+  margin-top:50px;
+  flex-basis:600px;
+}
+.rs main .list_wrap .list_area ul {
+  list-style:none;
+}
+.rs main .list_wrap .list_area ul li {
+  font-size:30px;
+  margin-bottom:30px;
+  font-weight:bold;
+}
+.rs main .list_wrap .list_area ul li span.active {
+  border-bottom:5px solid #000;
+  transition:.2s all;
+}
+.rs main .list_wrap .contents_area {
+  flex-basis:700px;
+  background-image: url('https://oxd.com/wp-content/uploads/2019/03/OXD-Homepage-Services-DigitalTransformation-1.jpg');
+  background-position:center;
+  background-size:cover;
+  position:relative;
+}
+.rs main .list_wrap .contents_area .contents_area_text {
+  background-color:#fff;
+  position:absolute;
+  top:50%;
+  left:-20px;
+  border-bottom:10px solid #000;
+  width:80%;
+  transform:translate(0, -50%);
+  padding:20px;
+}
+.rs main .list_wrap .contents_area .contents_area_text p {
+  margin:15px 0;
+}
+.rs main .list_wrap .contents_area .contents_area_text .btn {
+  font-weight:bold;
+  font-size:20px;
+  position:relative;
+  display:inline-block;
+}
+.rs main .list_wrap .contents_area .contents_area_text .btn::after {
+  content:'';
+  width:90%;
+  height:25px;
+  background-color:aquamarine;
+  position:absolute;
+  right:0;
+  bottom:0;
+  z-index: -1;
+  transition:all .5s;
+}
+.rs main .list_wrap .contents_area .contents_area_text .btn:hover::after {
+  width:100%;
+  height:30px;
+}
+
+@media only screen and (max-width:680px) {
+  .rs main .list_wrap {
+    flex-direction:column;
+  }
+  .rs main .list_wrap .list_area {
+    flex-basis:auto;
+  }
+
+}
