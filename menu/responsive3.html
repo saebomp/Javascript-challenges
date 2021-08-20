@@ -30,5 +30,27 @@
       </div>  
     </div>
   </div>
+  <label for="number1">a</label>
+  <input id="number1" type="text">
+  
+  <label for="number2">b</label>
+  <input id="number2" type="text">
+  
+  <a id="sub">btn</a>
+  <p id="result"></p>
+
+  <script>
+    sub.addEventListener('click', () => {
+  
+  let a = parseInt(document.getElementById('number1').value);
+  let b = parseInt(document.getElementById('number2').value);
+
+  result.innerHTML = a +b
+})
+
+let test = "hello world"
+
+console.log(test.reverse())
+  </script>
 </body>
 </html>

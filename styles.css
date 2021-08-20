@@ -426,3 +426,53 @@ a {
 @keyframes moving {
   100% { top:0}
 }
+
+/*******************************************************/
+/*******************************************************/
+/*************************Test**************************/
+/*******************************************************/
+/*******************************************************/
+
+.test .container {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-gap:15px;
+  grid-row:1fr 1fr 1fr;
+}
+.test .container .tile {
+  border:1px solid #fff;
+  padding:10px;
+}
+.test .container .tile:nth-child(3n) {
+  background-color:orange;
+}
+
+.test .container .tile img {
+  max-width:100%;
+}
+.test .container .tile p {
+  margin-top:10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+}
+
+
+@media only screen and (max-width:780px){
+  .test .container {
+    grid-template-columns:1fr 1fr 1fr;
+    grid-row:1fr 1fr 1fr 1fr;
+  }
+}
+
+
+@media only screen and (max-width:420px){
+  .test .container {
+    grid-template-columns:1fr;
+  }
+  .test .container .tile p {
+    -webkit-line-clamp: 2;
+  }
+}
+
