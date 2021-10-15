@@ -666,3 +666,33 @@ a {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
+.layout {
+  display:grid;
+  width:1000px;
+  margin: 0 auto;
+  grid-template-rows:1fr 2fr 1fr;
+  grid-template-columns:1fr;
+  height:100vh;
+}
+
+.layout nav ul {
+  display:flex;
+  flex-direction: row;
+}
+
+.layout nav ul li {
+  list-style: none;
+}
+
+section {
+  display:grid;
+  grid-template-rows:1fr 2fr;
+  grid-template-columns:1fr
+}
+footer ul {
+  display:flex;
+  flex-direction:row;
+  list-style:none;
+  align-items: center;
+}
