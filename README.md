@@ -9,6 +9,8 @@
 * Image slider
 * Canvas
 * Scroll Event
+* Mobile Navigation
+* Mouse Event
 
 # Setup
 https://saebomp.github.io/Javascript-challenges/
