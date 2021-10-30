@@ -21,6 +21,10 @@
       display: inline-block;
       position: absolute;
       right:0;
+      cursor: pointer;
+    }
+    .addBtn {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -30,8 +34,8 @@
     <span onclick="newElement()" class="addBtn">ADD</span>
   </div>
   <ul id="myUL">
-    <li>Hit the gym</li>
-    <li>Buy Eggs</li>
+    <li><input type="checkbox">Hit the gym</li>
+    <li><input type="checkbox">Buy Eggs</li>
   </ul>
 
 
@@ -60,6 +64,11 @@
     //add lists
     function newElement() {
       let li = document.createElement('li')
+
+      let x = document.createElement("INPUT");
+      x.setAttribute("type", "checkbox");
+      li.appendChild(x);
+
       let inputValue = document.getElementById('myInput').value;
       let t = document.createTextNode(inputValue)
       li.appendChild(t);
