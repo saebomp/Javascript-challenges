@@ -791,3 +791,8 @@ footer ul {
     display: none;
   }
 }
+
+.crud {
+  width:40%;
+  margin: 20px auto;
+}

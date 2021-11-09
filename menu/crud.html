@@ -11,21 +11,39 @@
   </style>
 </head>
 <body>
-    <p id="counter"></p>
-    <table>
-        <tr>
-            <th>Name</th>
-        </tr>
-        <tbody id="countries">
-            
-        </tbody>
-    </table>
+  <div class="crud">
+    <div id="container">
+    </div>
 
+  </div>    
   <script>
+    let crudApp = new function () {
+      this.myBooks = [
+            { ID: '1', Book_Name: 'Computer Architecture', Price: 125.60  },
+            { ID: '2', Book_Name: 'Asp.Net 4 Blue Book', Price: 56.00},
+            { ID: '3', Book_Name: 'Popular Science', Price: 210.40}
+        ]
+      this.col = [];
 
+      // --createTable S
+      this.createTable = function () {
+        
+        //Extractvalue for table header
+        for(let i = 0; i < this.myBooks.length; i++) {
+          for(let key in this.myBooks[i]){
+            if(this.col.indexOf(key) === -1){
+              this.col.push(key);
+            }
+          }
+        }
+      }
+      // --createTable E
+
+    }
     
   </script>
 </body>
 </html>
 
-<!-- https://medium.com/@etiennerouzeaud/a-simple-crud-application-with-javascript-ebc82f688c59 -->
+<!-- https://www.encodedna.com/javascript/how-to-create-a-simple-crud-application-using-only-javascript.htm -->
+<!-- https://www.encodedna.com/javascript/practice-ground/default.htm?pg=crud_application_using_javascript -->
