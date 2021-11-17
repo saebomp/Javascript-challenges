@@ -7,7 +7,34 @@
   <title>Practice</title>
   <link rel="stylesheet" href="../styles.css">
   <style>
+    table {
+      width: 100%;
+      font: 17px Calibri;
+    }
+    table, th, td 
+    {
+      border: solid 1px #DDD;
+      border-collapse: collapse;
+      padding: 2px 3px;
+      text-align: center;
+    }
 
+    input[type='button'] 
+    {
+      font: 15px Calibri;
+      cursor: pointer;
+      border: none;
+      color: #FFF;
+    }
+    
+    input[type='text'], select 
+    {
+      font: 17px Calibri;
+      text-align: center;
+      border: solid 1px #CCC;
+      width: auto;
+      padding: 2px 3px;
+    }
   </style>
 </head>
 <body>
@@ -32,15 +59,86 @@
         for(let i = 0; i < this.myBooks.length; i++) {
           for(let key in this.myBooks[i]){
             if(this.col.indexOf(key) === -1){
+              //indexOf(key) array에서 지정된 요소를 찾아서 첫번째 index를 리턴하고 없으면 -1 리턴함
               this.col.push(key);
+              }
             }
           }
         }
-      }
+        //Create a Table
+        let table = document.createElemtnt('table');
+        table.setAttribute('id', 'booksTable') //table에 id줌
+
+        let tr = table.insertRow(-1)   //header만들어줌
+
+        for (let h=0; h < this.col.length; h++){
+          let th = document.createElement('th');
+          th.innerHTML = this.col(h).replace('_', ' ');
+          tr.appendChild(th);
+        }
+
+        // ADD ROWS USING JSON DATA.
+        for (let i = 0; i < this.myBooks.length; i++) {
+
+        tr = table.insertRow(-1);           // CREATE A NEW ROW.
+
+        for (let j = 0; j < this.col.length; j++) {
+            let tabCell = tr.insertCell(-1);
+            tabCell.innerHTML = this.myBooks[i][this.col[j]];
+        }
+
+        // Dynamically create and add elements to table cells with events
+
+        this.td = document.createElement('td');
+
+        // CANCEL
+        tr.appendChild(this.td);
+        let lblCancel = document.createElement('label');
+        lblCancel.innerHTML = '✖';
+        lblCancel.setAttribute('onclick', 'crudApp.Cancel(this)');
+        lblCancel.setAttribute('style', 'display:none;');
+        lblCancel.setAttribute('title', 'Cancel');
+        lblCancel.setAttribute('id', 'lbl' + i);
+        this.td.appendChild(lblCancel);
+
+        // SAVE.
+        tr.appendChild(this.td);
+        let btSave = document.createElement('input');
+
+        btSave.setAttribute('type', 'button');      // SET ATTRIBUTES.
+        btSave.setAttribute('value', 'Save');
+        btSave.setAttribute('id', 'Save' + i);
+        btSave.setAttribute('style', 'display:none;');
+        btSave.setAttribute('onclick', 'crudApp.Save(this)');      
+        this.td.appendChild(btSave);
+
+        // UPDATE.
+        tr.appendChild(this.td);
+        let btUpdate = document.createElement('input');
+
+        btUpdate.setAttribute('type', 'button');    
+        btUpdate.setAttribute('value', 'Update');
+        btUpdate.setAttribute('id', 'Edit' + i);
+        btUpdate.setAttribute('style', 'background-color:#44CCEB;');
+        btUpdate.setAttribute('onclick', 'crudApp.Update(this)');   
+        this.td.appendChild(btUpdate);
+
+        // DELETE
+        this.td = document.createElement('th');
+        tr.appendChild(this.td);
+        let btDelete = document.createElement('input');
+        btDelete.setAttribute('type', 'button');   
+        btDelete.setAttribute('value', 'Delete');
+        btDelete.setAttribute('style', 'background-color:#ED5650;');
+        btDelete.setAttribute('onclick', 'crudApp.Delete(this)');   
+        this.td.appendChild(btDelete);
+        }
+
+
       // --createTable E
 
     }
-    
+    crudApp.createTable()
   </script>
 </body>
 </html>
