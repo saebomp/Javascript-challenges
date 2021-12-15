@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>       
+        .web242-utility-seo-radio-button td{
+            display: flex;
+            margin-bottom: 36px;
+            overflow: hidden;
+            background:#f5f5f5;
+            width:106px;
+            border-radius:20px
+        }
+
+
+        .web242-utility-seo-radio-button td input {
+            position: absolute !important;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            width: 1px;
+            border: 0;
+            overflow: hidden;
+        }
+
+        .web242-utility-seo-radio-button td label {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 14px;
+            line-height: 1;
+            text-align: center;
+            padding: 8px 16px;
+            margin-right: -1px;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .web242-utility-seo-radio-button td label:hover {
+            cursor: pointer;
+        }
+
+        .web242-utility-seo-radio-button td input:checked + label {
+            background-color: #a5dc86;
+            box-shadow: none;
+        }
+
+        .web242-utility-seo-radio-button td label:first-of-type {
+            border-radius: 20px;
+        }
+
+        .web242-utility-seo-radio-button td label:last-of-type {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="web242-utility-seo-radio-button">
+            <th scope="row">Header Code Active?</th>
+            <td>
+                <input type="radio" id="web242-utility-seo-head-field-active1" name="web242-utility-seo-head-field-active" value="true" checked="">
+                <label for="web242-utility-seo-head-field-active1" class="label">On 
+                    
+                </label>
+                <input type="radio" id="web242-utility-seo-head-field-active2" name="web242-utility-seo-head-field-active" value="false">
+                <label for="web242-utility-seo-head-field-active2">Off 
+                    
+                </label>
+            </td>
+        </tr>
+        </table>
+        <!-- <script>
+            //  function newElement() {
+            //      var label = document.querySelectorAll(".web242-utility-seo-radio-button td label")
+                 
+            //      for (var i = label.length; i--;) {
+            //         var span = document.createElement("span");
+            //         label[i].appendChild(span);
+            //     }
+            // }
+            // newElement()
+            function newElement() {
+            const allInputs = document.querySelectorAll(".web242-utility-seo-radio-button td input");
+            const label = document.querySelector(".web242-utility-seo-radio-button td label");
+    
+            for (var i = allInputs.length; i--;) {
+                if(allInputs[i].checked){
+                    allInputs[i].parentElement.style.background = '#a5dc86'
+                }
+                else{
+                    allInputs[i].parentElement.style.background = '#ffffff'
+                }   
+            }
+    
+         
+            }
+            newElement()
+        </script> -->
+</body>
+</html>
