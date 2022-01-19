@@ -2,7 +2,7 @@ window.addEventListener('load', ()=> {
     const API = 'd2b64a537b17543c420bb4847913d68e'
     let lon;
     let lat;
-    let temperatureDescription = document.querySelector('.teperature-description')
+    let temperatureDescription = document.querySelector('.temperature-description')
     let temperatureDegree = document.querySelector('.temperature-degree')
     let locationTimezone = document.querySelector('.location-timezone')
 
@@ -20,13 +20,23 @@ window.addEventListener('load', ()=> {
             })
             .then(data => {
                 console.log('data', data)
-                temperatureDegree.textContent = data.main.temp
+                temperatureDegree.textContent = (data.main.temp - 273.15).toFixed(0);
+                locationTimezone.textContent = data.name
+                temperatureDescription.textContent = data.weather[0].main
+               
+      
             })
         })
     }
+
+
 })
 
-// https://www.youtube.com/watch?v=wPElVpR1rwA&t=1283s    14:17
+// https://www.youtube.com/watch?v=wPElVpR1rwA&t=1283s    34:09
 // https://home.openweathermap.org/api_keys
 
 // http://api.openweathermap.org/data/2.5/weather?q=dublin&appid=d2b64a537b17543c420bb4847913d68e
+
+
+// icon
+// https://github.com/darkskyapp/skycons/blob/master/skycons.js
