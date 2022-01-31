@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Each</title>
+</head>
+<body>
+    <div class="for"></div>
+    
+    <div>
+        <ui>
+            <li>.map() when you want to transform elements in an array.</li>
+            <li>.filter() when you want to select a subset of multiple elements from an array.</li>
+            <li>.find() When you want to select a single element from an array.</li>
+            <li>.reduce() when you want derive a single value from multiple elements in an array.</li>
+        </ui>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // for
+        var array = [1,2,3]
+        for (var i=0; i < array.length; i++) {
+            console.log('for', i)
+        }
+
+        // forEach()
+        var array2 = [{firstname:'John', lastname:'Doe'}, {firstname:'Mi', lastname:'Doe'}]
+        array2.forEach(function(i){
+            console.log('forEach', i)
+        })
+
+        // .forEach() is great you need to execute a function for each individual element in an array.
+
+
+        //map
+        var array3 = [{firstname:'John', lastname:'Doe'}, {firstname:'Mi', lastname:'Doe'}]
+        array3.map((el) => {
+            console.log('map', el)
+        })
+
+        //filter
+        var array4 = [{firstname:'John', lastname:'Doe'}, {firstname:'Mi', lastname:'Doe'}]
+        const result = array4.filter(el => el.firstname === 'Mi')
+        console.log('filter', result)
+
+        //find
+        var array5 = [{firstname:'John', lastname:'Doe', age:20}, {firstname:'Mi', lastname:'Doe', age:20}]
+        const result2 = array5.find(el => el.age === 20)
+        console.log('find', result2)
+
+
+        //reduce
+        var array6 = [1,2,3,4,5]
+        const result3 = array6.reduce((acc, item) => acc+item)
+        console.log('reduce', result3)
+    </script>
+</body>
+</html>
+
+<!-- https://medium.com/@JeffLombardJr/understanding-foreach-map-filter-and-find-in-javascript-f91da93b9f2c -->
